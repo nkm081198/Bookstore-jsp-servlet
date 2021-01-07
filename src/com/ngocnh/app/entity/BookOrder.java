@@ -1,5 +1,5 @@
 package com.ngocnh.app.entity;
-// Generated Jan 7, 2021 9:56:04 AM by Hibernate Tools 5.2.12.Final
+// Generated Jan 6, 2021 11:51:13 PM by Hibernate Tools 5.2.12.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -22,6 +22,11 @@ import javax.persistence.TemporalType;
 @Table(name = "book_order", catalog = "bookstore")
 public class BookOrder implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private long id;
 	private Customer customer;
 	private Date orderDate;

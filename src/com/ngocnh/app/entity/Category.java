@@ -1,5 +1,5 @@
 package com.ngocnh.app.entity;
-// Generated Jan 7, 2021 9:56:04 AM by Hibernate Tools 5.2.12.Final
+// Generated Jan 6, 2021 11:51:13 PM by Hibernate Tools 5.2.12.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -17,6 +17,11 @@ import javax.persistence.Table;
 @Table(name = "category", catalog = "bookstore")
 public class Category implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private long id;
 	private String name;
 	private Set<Book> books = new HashSet<Book>(0);
@@ -24,13 +29,11 @@ public class Category implements java.io.Serializable {
 	public Category() {
 	}
 
-	public Category(long id, String name) {
-		this.id = id;
+	public Category(String name) {
 		this.name = name;
 	}
 
-	public Category(long id, String name, Set<Book> books) {
-		this.id = id;
+	public Category(String name, Set<Book> books) {
 		this.name = name;
 		this.books = books;
 	}

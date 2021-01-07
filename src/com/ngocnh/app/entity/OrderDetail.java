@@ -1,5 +1,5 @@
 package com.ngocnh.app.entity;
-// Generated Jan 7, 2021 9:56:04 AM by Hibernate Tools 5.2.12.Final
+// Generated Jan 6, 2021 11:51:13 PM by Hibernate Tools 5.2.12.Final
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -18,6 +18,11 @@ import javax.persistence.Table;
 @Table(name = "order_detail", catalog = "bookstore")
 public class OrderDetail implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private OrderDetailId id;
 	private Book book;
 	private BookOrder bookOrder;

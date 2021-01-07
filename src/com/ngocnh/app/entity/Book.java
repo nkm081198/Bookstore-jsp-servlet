@@ -1,5 +1,5 @@
 package com.ngocnh.app.entity;
-// Generated Jan 7, 2021 9:56:04 AM by Hibernate Tools 5.2.12.Final
+// Generated Jan 6, 2021 11:51:13 PM by Hibernate Tools 5.2.12.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -7,6 +7,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,7 +25,12 @@ import javax.persistence.UniqueConstraint;
 @Table(name = "book", catalog = "bookstore", uniqueConstraints = @UniqueConstraint(columnNames = "title"))
 public class Book implements java.io.Serializable {
 
-	private long id;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private Long id;
 	private Category category;
 	private String title;
 	private String author;
@@ -39,9 +46,8 @@ public class Book implements java.io.Serializable {
 	public Book() {
 	}
 
-	public Book(long id, Category category, String title, String author, String description, String isbn, byte[] image,
+	public Book(Category category, String title, String author, String description, String isbn, byte[] image,
 			float price, Date publishDate, Date lastUpdateTime) {
-		this.id = id;
 		this.category = category;
 		this.title = title;
 		this.author = author;
@@ -53,9 +59,8 @@ public class Book implements java.io.Serializable {
 		this.lastUpdateTime = lastUpdateTime;
 	}
 
-	public Book(long id, Category category, String title, String author, String description, String isbn, byte[] image,
+	public Book(Category category, String title, String author, String description, String isbn, byte[] image,
 			float price, Date publishDate, Date lastUpdateTime, Set<Review> reviews, Set<OrderDetail> orderDetails) {
-		this.id = id;
 		this.category = category;
 		this.title = title;
 		this.author = author;
@@ -70,13 +75,14 @@ public class Book implements java.io.Serializable {
 	}
 
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 
 	@Column(name = "id", unique = true, nullable = false)
-	public long getId() {
+	public Long getId() {
 		return this.id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

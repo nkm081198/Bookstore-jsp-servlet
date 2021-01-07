@@ -1,7 +1,7 @@
 <div align="center">
 	<div>
-		<img
-			src="D:\NgocNH\Bookstore-jsp-servlet\WebContent\images\BookstoreLogo.png">
+		<!-- <img src="D:\NgocNH\Bookstore-jsp-servlet\WebContent\images\BookstoreAdminLogo.png"> -->
+		<img src="images/BookstoreAdminLogo.png">
 	</div>
 
 	<div>

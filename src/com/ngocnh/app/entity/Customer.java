@@ -1,5 +1,5 @@
 package com.ngocnh.app.entity;
-// Generated Jan 7, 2021 9:56:04 AM by Hibernate Tools 5.2.12.Final
+// Generated Jan 6, 2021 11:51:13 PM by Hibernate Tools 5.2.12.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -21,6 +21,11 @@ import javax.persistence.UniqueConstraint;
 @Table(name = "customer", catalog = "bookstore", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class Customer implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private long id;
 	private String email;
 	private String fullname;
