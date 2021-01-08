@@ -1,6 +1,8 @@
 package com.ngocnh.app.dao;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -41,11 +43,12 @@ public class UserDAOTest {
 	@Test(expected = PersistenceException.class)
 	public void testCreareFieldsNotSet() {
 		Users u = new Users();
-
+		System.out.println(u.getEmail());
 		u = userDAO.creare(u);
 
 		assertTrue(u.getId() > 0);
 	}
+
 	@Test
 	public void testUpdateUser() {
 		Users user = new Users();
@@ -56,8 +59,16 @@ public class UserDAOTest {
 		String expected = "mysecret";
 		String actual = user.getPassword();
 		assertEquals(expected, actual);
-		
-		
+
+	}
+	@Test(expected = PersistenceException.class)
+	public void testGetUsersfound() {
+		Long UserId = 1L;
+		Users user = userDAO.get(UserId);
+		if(user != null) {
+			System.out.println(user.getEmail());
+		}
+		assertNotNull(user);
 	}
 
 	@AfterClass

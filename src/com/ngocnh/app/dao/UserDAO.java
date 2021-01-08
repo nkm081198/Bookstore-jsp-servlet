@@ -23,9 +23,8 @@ public class UserDAO extends jpaDAO<Users> implements GenericDAO<Users> {
 	}
 
 	@Override
-	public Users get(Object id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Users get(Object UserId) {
+		return super.find(Users.class, UserId);
 	}
 
 	@Override
