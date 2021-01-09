@@ -2,10 +2,14 @@ package com.ngocnh.app.dao;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityNotFoundException;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceException;
 
@@ -61,14 +65,51 @@ public class UserDAOTest {
 		assertEquals(expected, actual);
 
 	}
+
 	@Test(expected = PersistenceException.class)
 	public void testGetUsersfound() {
 		Long UserId = 1L;
 		Users user = userDAO.get(UserId);
-		if(user != null) {
+		if (user != null) {
 			System.out.println(user.getEmail());
 		}
 		assertNotNull(user);
+	}
+
+	@Test
+	public void testGetUserNotFound() {
+		Long userId = 99L;
+		Users user = userDAO.get(userId);
+
+		assertNull(user);
+	}
+
+	@Test
+	public void testDeleteUser() {
+		Long UserId = 5L;
+		userDAO.delete(UserId);
+		Users user = userDAO.get(UserId);
+		assertNull(user);
+	}
+	@Test(expected = EntityNotFoundException.class)
+	public void testDelateNonExistUsers() {
+		Long UserId = 55L;
+		userDAO.delete(UserId);
+	}
+	@Test
+	public void testListAll() {
+		List<Users> listUsers = userDAO.ListAll();
+		for(Users user : listUsers) {
+			System.out.println(user.getEmail());
+		}
+		
+		assertTrue(listUsers.size() > 0);
+	}
+	@Test
+	public void testCount() {
+		long totalUsers = userDAO.count();
+		
+		assertEquals(8, totalUsers);
 	}
 
 	@AfterClass
