@@ -4,7 +4,7 @@
 		Welcome,Admin | <a href="logout">Logout</a>
 	</div>
 	<div>
-		<a href="list_users">Users</a> | <a href="users">Categories</a> | <a
+		<a href="admin/list_users">Users</a> | <a href="users">Categories</a> | <a
 			href="books">Books</a> | <a href="customer">Customers</a> | <a
 			href="reviews">Reviews</a> | <a href="orders">Order</a>
 	</div>

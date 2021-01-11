@@ -20,7 +20,8 @@ public class UserServices {
 		userDAO  = new UserDAO(entityManager);
 	}
 
-	public void listUser() {
+	public  List<Users> listUser() {
 	List<Users> listUsers =	userDAO.ListAll();
+	return listUsers;
 	}
 }
