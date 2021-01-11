@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 
 import com.ngocnh.app.entity.Users;
 
-public class UserDAO extends jpaDAO<Users> implements GenericDAO<Users> {
+public class UserDAO extends JpaDAO<Users> implements GenericDAO<Users> {
 
 	public UserDAO(EntityManager entityManager) {
 		super(entityManager);
@@ -28,6 +28,14 @@ public class UserDAO extends jpaDAO<Users> implements GenericDAO<Users> {
 		return super.find(Users.class, UserId);
 	}
 
+	public Users findByEmail(String email) {
+		List<Users> listUsers = super.findWithNamedQuery("Users.findByEmail");
+		if (listUsers != null && listUsers.size() > 0) {
+			return listUsers.get(0);
+		}
+		return null;
+	}
+
 	@Override
 	public void delete(Object UserId) {
 		super.delete(Users.class, UserId);
@@ -35,7 +43,7 @@ public class UserDAO extends jpaDAO<Users> implements GenericDAO<Users> {
 	}
 
 	@Override
-	public List<Users> ListAll() {
+	public List<Users> listAll() {
 		return super.findWithNamedQuery("Users.findAll");
 	}
 

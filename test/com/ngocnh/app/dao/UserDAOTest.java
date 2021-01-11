@@ -98,7 +98,7 @@ public class UserDAOTest {
 	}
 	@Test
 	public void testListAll() {
-		List<Users> listUsers = userDAO.ListAll();
+		List<Users> listUsers = userDAO.listAll();
 		for(Users user : listUsers) {
 			System.out.println(user.getEmail());
 		}
@@ -110,6 +110,13 @@ public class UserDAOTest {
 		long totalUsers = userDAO.count();
 		
 		assertEquals(8, totalUsers);
+	}
+	@Test
+	public void testFindByEmail() {
+		String email = "ngocnh@gmail.com";
+	Users user  = userDAO.findByEmail(email);
+
+	assertNotNull(user);
 	}
 
 	@AfterClass

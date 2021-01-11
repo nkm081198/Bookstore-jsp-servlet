@@ -13,15 +13,24 @@ public class UserServices {
 	private EntityManagerFactory entityManagerFactory;
 	private EntityManager entityManager;
 	private UserDAO userDAO;
-	
+
 	public UserServices() {
 		entityManagerFactory = Persistence.createEntityManagerFactory("BookStoreWebsite");
 		entityManager = entityManagerFactory.createEntityManager();
-		userDAO  = new UserDAO(entityManager);
+		userDAO = new UserDAO(entityManager);
 	}
 
-	public  List<Users> listUser() {
-	List<Users> listUsers =	userDAO.ListAll();
-	return listUsers;
+	public List<Users> listUser() {
+		List<Users> listUsers = userDAO.listAll();
+		
+		return listUsers;
+	}
+	
+	public void createUser(String email, String fullname, String password) {
+		Users user = new Users();
+		user.setEmail(email);
+		user.setFullName(fullname);
+		user.setPassword(password);
+		userDAO.create(user);
 	}
 }

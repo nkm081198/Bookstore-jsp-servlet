@@ -11,7 +11,7 @@ public interface GenericDAO<T> {
 	
 	public void delete(Object id);
 	
-	public List<T> ListAll();
+	public List<T> listAll();
 	
 	public long count();
 }
