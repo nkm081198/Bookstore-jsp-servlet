@@ -64,6 +64,7 @@
 			fieldPassword.focus();
 			return false;
 		}
+		
 		return true;
 	}
 </script>
