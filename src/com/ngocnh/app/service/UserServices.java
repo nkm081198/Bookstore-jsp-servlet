@@ -1,10 +1,17 @@
 package com.ngocnh.app.service;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+
+import org.junit.runner.Request;
 
 import com.ngocnh.app.dao.UserDAO;
 import com.ngocnh.app.entity.Users;
@@ -20,17 +27,26 @@ public class UserServices {
 		userDAO = new UserDAO(entityManager);
 	}
 
-	public List<Users> listUser() {
+	public void listUser(HttpServletRequest request, ServletResponse response) throws ServletException, IOException {
 		List<Users> listUsers = userDAO.listAll();
-		
-		return listUsers;
+		request.setAttribute("listUsers", listUsers);
+		request.setAttribute("message"," New user create successfully");
+
+		String listPage = "user_list.jsp";
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPage);
+
+		requestDispatcher.forward(request, response);
+
 	}
-	
-	public void createUser(String email, String fullname, String password) {
-		Users user = new Users();
-		user.setEmail(email);
-		user.setFullName(fullname);
-		user.setPassword(password);
-		userDAO.create(user);
+
+	public void createUser(HttpServletRequest request, ServletResponse response) {
+		String email = request.getParameter("email");
+		String fullName = request.getParameter("fullname");
+		String password = request.getParameter("password");
+
+		Users newUser = new Users(email, fullName, password);
+
+		userDAO.create(newUser);
+
 	}
 }
