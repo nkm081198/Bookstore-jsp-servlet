@@ -10,6 +10,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.junit.runner.Request;
 
@@ -20,18 +21,28 @@ public class UserServices {
 	private EntityManagerFactory entityManagerFactory;
 	private EntityManager entityManager;
 	private UserDAO userDAO;
+	private HttpServletRequest request;
+	private HttpServletResponse response;
 
-	public UserServices() {
+	public UserServices(HttpServletRequest request, HttpServletResponse response) {
+		this.request = request;
+		this.response = response;
 		entityManagerFactory = Persistence.createEntityManagerFactory("BookStoreWebsite");
 		entityManager = entityManagerFactory.createEntityManager();
 		userDAO = new UserDAO(entityManager);
 	}
 
-	public void listUser(HttpServletRequest request, ServletResponse response) throws ServletException, IOException {
+	public void listUser() throws ServletException, IOException {
+		listUser(null);
+	}
+
+	public void listUser(String message) throws ServletException, IOException {
 		List<Users> listUsers = userDAO.listAll();
 		request.setAttribute("listUsers", listUsers);
-		request.setAttribute("message"," New user create successfully");
 
+		if (message != null) {
+			request.setAttribute("message", message);
+		}
 		String listPage = "user_list.jsp";
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPage);
 
@@ -39,14 +50,32 @@ public class UserServices {
 
 	}
 
-	public void createUser(HttpServletRequest request, ServletResponse response) {
+	public void createUser() throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String fullName = request.getParameter("fullname");
 		String password = request.getParameter("password");
+		Users existUser = userDAO.findByEmail(email);
+		if (existUser != null) {
+			String message = "Could not create user. A user with email " + email + " already exist";
+			request.setAttribute("message", message);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("message.jsp");
+			dispatcher.forward(request, response);
+		} else {
 
-		Users newUser = new Users(email, fullName, password);
+			Users newUser = new Users(email, fullName, password);
+			userDAO.create(newUser);
+			listUser("New user created successfully");
+		}
+	}
 
-		userDAO.create(newUser);
-
+	public void editUser() throws ServletException, IOException {
+		Long id = Long.parseLong(request.getParameter("id"));
+		Users user = userDAO.get(id);
+		
+		String editPage = "user_form.jsp";
+		request.setAttribute("user", user);
+		
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(editPage);
+		requestDispatcher.forward(request, response);
 	}
 }
