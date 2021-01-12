@@ -21,33 +21,40 @@
 	</div>
 
 	<div align="center">
-		<form action="create_user" method="post"
-			onsubmit="return validateFormInput()">
-			<table>
-				<tr>
-					<td align="right">Email:</td>
-					<td align="left"><input type="text" id="email" name="email"
-						size="20" value="${user.email}" /></td>
-				</tr>
-				<tr>
-					<td align="right">Full name:</td>
-					<td align="left"><input type="text" id="fullname"
-						name="fullname" size="20" value="${user.fullName}" /></td>
-				</tr>
-				<tr>
-					<td align="right">Password:</td>
-					<td align="left"><input type="password" id="password"
-						name="password" size="20" value="${user.password}" /></td>
-				</tr>
-				<tr>
-					<td>&nbsp;</td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center"><input type="submit"
-						value="Save" /> <input type="button" value="Cancel"
-						onclick="javacript:history.go(-1);" /></td>
-				</tr>
-			</table>
+		<c:if test="${user != null}">
+			<form action="update_user" method="post"
+				onsubmit="return validateFormInput()">
+			<input type="hidden" name="id" value="${user.id}">	
+		</c:if>
+		<c:if test="${user == null}">
+			<form action="create_user" method="post"
+				onsubmit="return validateFormInput()">
+		</c:if>
+		<table>
+			<tr>
+				<td align="right">Email:</td>
+				<td align="left"><input type="text" id="email" name="email"
+					size="20" value="${user.email}" /></td>
+			</tr>
+			<tr>
+				<td align="right">Full name:</td>
+				<td align="left"><input type="text" id="fullname"
+					name="fullname" size="20" value="${user.fullName}" /></td>
+			</tr>
+			<tr>
+				<td align="right">Password:</td>
+				<td align="left"><input type="password" id="password"
+					name="password" size="20" value="${user.password}" /></td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit"
+					value="Save" /> <input type="button" value="Cancel"
+					onclick="javacript:history.go(-1);" /></td>
+			</tr>
+		</table>
 		</form>
 	</div>
 	<jsp:directive.include file="footer.jsp" />
