@@ -19,25 +19,22 @@ import org.junit.Test;
 
 import com.ngocnh.app.entity.Users;
 
-public class UserDAOTest {
-	private static EntityManagerFactory createEntityManagerFactory;
-	private static EntityManager entityManager;
+public class UserDAOTest extends BaseDAOTest{
 	private static UserDAO userDAO;
 
 	@BeforeClass
-	public static void setUpClass() {
-
-		createEntityManagerFactory = Persistence.createEntityManagerFactory("BookStoreWebsite");
-		entityManager = createEntityManagerFactory.createEntityManager();
+	public static void setUpClass() throws Exception {
+		entityManagerFactory = Persistence.createEntityManagerFactory("BookStoreWebsite");
+		entityManager = entityManagerFactory.createEntityManager();
 		userDAO = new UserDAO(entityManager);
 	}
 
 	@Test
 	public void testCreare() {
 		Users u = new Users();
-		u.setFullName("Nguyen Khac Manh");
-		u.setEmail("manhnk@gmail.com");
-		u.setPassword("22222");
+		u.setFullName("Nguyen Khac Manh11133");
+		u.setEmail("manhnk11133@gmail.com");
+		u.setPassword("22222111");
 
 		u = userDAO.creare(u);
 
@@ -122,7 +119,7 @@ public class UserDAOTest {
 	@AfterClass
 	public static void tearDownClass() {
 		entityManager.close();
-		createEntityManagerFactory.close();
+		entityManagerFactory.close();
 	}
 
 }
