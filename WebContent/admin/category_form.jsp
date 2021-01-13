@@ -24,20 +24,20 @@
 		<c:if test="${category != null}">
 			<form action="update_category" method="post"
 				onsubmit="return validateFormInput()">
-			<input type="hidden" name="id" value="${category.id}">	
+				<input type="hidden" name="id" value="${category.id}">
 		</c:if>
 		<c:if test="${category == null}">
 			<form action="create_category" method="post"
 				onsubmit="return validateFormInput()">
 		</c:if>
 		<table>
-			
+
 			<tr>
 				<td align="right">Name:</td>
-				<td align="left"><input type="text" id="name"
-					name="name" size="20" value="${category.name}" /></td>
+				<td align="left"><input type="text" id="name" name="name"
+					size="20" value="${category.name}" /></td>
 			</tr>
-			
+
 			<tr>
 				<td>&nbsp;</td>
 			</tr>
@@ -54,13 +54,12 @@
 <script type="text/javascript">
 	function validateFormInput() {
 		var fieldName = document.getElementById("name");
-		
+
 		if (fieldName.value.length == 0) {
 			alert("Category name is required!");
 			fieldName.focus();
 			return false;
 		}
-		
 
 		return true;
 	}

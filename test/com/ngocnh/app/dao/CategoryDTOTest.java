@@ -83,5 +83,14 @@ public class CategoryDTOTest extends BaseDAOTest {
 		
 		assertEquals(4,totalCategorys);
 	}
+	
+	@Test
+	public void testFindByName() {
+		String name = "Jave asdsa";
+		Category category = categoryDAO.findByName(name);
+		
+		assertNull(category);
+	}
+	
 
 }

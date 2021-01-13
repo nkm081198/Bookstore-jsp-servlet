@@ -17,7 +17,6 @@ public class ListCategoryServlet extends BaseServlet {
 
 	public ListCategoryServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -25,6 +24,8 @@ public class ListCategoryServlet extends BaseServlet {
 		response.getWriter().println("List Category");
 		CategoryServices categoryServices = new CategoryServices(entityManager, request, response);
 		categoryServices.listCategory();
+		
+		
 
 	}
 
