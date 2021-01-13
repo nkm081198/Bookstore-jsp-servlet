@@ -1,4 +1,4 @@
-package com.ngocnh.app.controller.admin;
+package com.ngocnh.app.controller.admin.user;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,11 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ngocnh.app.controller.admin.BaseServlet;
 import com.ngocnh.app.entity.Users;
 import com.ngocnh.app.service.UserServices;
 
 @WebServlet("/admin/list_users")
-public class ListUsersSeverlet extends HttpServlet {
+public class ListUsersSeverlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
 
 	public ListUsersSeverlet() {
@@ -24,7 +25,7 @@ public class ListUsersSeverlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		 UserServices userServices = new UserServices(request, response);
+		 UserServices userServices = new UserServices(entityManager,request, response);
 		 userServices.listUser();
 	}
 
