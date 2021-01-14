@@ -33,7 +33,7 @@
 					<td>${status.index + 1}</td>
 					<td>${cat.id}</td>
 					<td>${cat.name}</td>
-					<td><a href="edit_user?id=${cat.id}">Edit</a> &nbsp;
+					<td><a href="edit_category?id=${cat.id}">Edit</a> &nbsp;
 					    <a href="javascript:confirmDelete(${cat.id})">Delete</a></td>
 				</tr>
 			</c:forEach>
@@ -44,8 +44,8 @@
 	<jsp:directive.include file="footer.jsp" />
 	<script>
 		function confirmDelete(id){
-			if(confirm('Are you sure you want to delete the user with ID ' + id + ' ?')){
-				window.location = 'delete_user?id='+ id;
+			if(confirm('Are you sure you want to delete the category with ID ' + id + ' ?')){
+				window.location = 'delete_category?id='+ id;
 			}
 		}
 	</script>

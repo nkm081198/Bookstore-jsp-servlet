@@ -1,4 +1,4 @@
-package com.ngocnh.app.controller.admin;
+package com.ngocnh.app.controller;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

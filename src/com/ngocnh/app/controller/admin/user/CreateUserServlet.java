@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ngocnh.app.controller.admin.BaseServlet;
+import com.ngocnh.app.controller.BaseServlet;
 import com.ngocnh.app.dao.UserDAO;
 import com.ngocnh.app.entity.Users;
 import com.ngocnh.app.service.UserServices;

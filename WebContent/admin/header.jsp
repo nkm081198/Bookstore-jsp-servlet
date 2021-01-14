@@ -1,5 +1,6 @@
 <%@ include file="/common/common.jsp" %>
 <div align="center">
+
 	<img src="images/BookstoreAdminLogo.png">
 	<div style="padding-bottom: 20px">
 		Welcome,Admin | <a href="logout">Logout</a>
@@ -12,4 +13,5 @@
 	    <a href="reviews">Reviews</a> | 
 		<a href="orders">Order</a>
 	</div>
+	
 </div>
