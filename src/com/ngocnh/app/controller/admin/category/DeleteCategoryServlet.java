@@ -15,7 +15,6 @@ public class DeleteCategoryServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
 
     public DeleteCategoryServlet() {
-        // TODO Auto-generated constructor stub
     }
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
