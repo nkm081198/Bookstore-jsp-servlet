@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div align="center">
 	<div>
-		<img src="images/BookstoreLogo.png">
+		<img src="D:\NgocNH\Bookstore-jsp-servlet\WebContent\images\BookstoreLogo.png">
 	</div>
 
 	<div>
